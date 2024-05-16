@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "%PACKAGE_NAME%"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+packages = []
+
+[tool.taskipy.tasks]
+export = "poetry export -f requirements.txt --without-hashes > requirements.txt"
+build = "poetry build"
+publish = "poetry publish"
+run = "poetry run %PACKAGE_NAME%"
+
+[tool.poetry.dependencies]
+taskipy = "^1.12.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,4 @@
+%PACKAGE_NAME%/__init__.py
+%PACKAGE_NAME%/core.py
+pyproject.toml
+README.md

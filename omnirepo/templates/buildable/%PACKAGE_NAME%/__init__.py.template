@@ -1,0 +1,6 @@
+from .core import func
+
+__all__ = ['func']
+
+if __name__ == "__main__":
+    func()

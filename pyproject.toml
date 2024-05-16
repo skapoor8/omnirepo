@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "omnirepo"
+version = "0.1.0"
+description = ""
+authors = ["Siddharth Kapoor"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.9"
+click = "^8.1.7"
+toml = "^0.10.2"
+toml-sort = "^0.23.1"
+tomli = "^2.0.1"
+tomli-w = "^1.0.0"
+taskipy = "^1.12.2"
+pytest = "^8.2.0"
+mypy = "^1.10.0"
+flake8 = "^7.0.0"
+black = "^24.4.2"
+
+[tool.poetry.scripts]
+omnirepo = "omnirepo:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
