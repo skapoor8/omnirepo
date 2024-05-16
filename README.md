@@ -39,25 +39,26 @@ pipx uninstall omnirepo
 
 ## TODO
 
-[x] local development
-[x] initialize monorepo/workspace
-[x] add libs
-[x] build script
-[x] add apps
-[x] run script
-[ ] sync imports for buildable packages (Error in running quantum rn)
-[ ] dep graph
-[ ] ~~make scripts revertible~~
-[ ] linting - TEST
-[ ] type checking - TEST
-[ ] tests - TEST
-[ ] ~~plugin system??? (nope, better off trying to write something with nx maybe? Is it feasable?)~~
-[ ] turn intp poetry plugin
-[ ] publish to pypi
-[ ] make sure templates are included in build
+- [x] local development
+- [x] initialize monorepo/workspace
+- [x] add libs
+- [x] build script
+- [x] add apps
+- [x] run script
+- [ ] sync imports for buildable packages (Error in running quantum rn)
+- [ ] dep graph
+- [ ] ~~make scripts revertible~~
+- [ ] linting - TEST
+- [ ] type checking - TEST
+- [ ] tests - TEST
+- [ ] ~~plugin system??? (nope, better off trying to write something with nx maybe? Is it feasable?)~~
+- [ ] turn intp poetry plugin
+- [ ] publish to pypi
+- [ ] make sure templates are included in build
 
 Confusion about:
-[ ] wrapping dir for modules
+
+- [ ] wrapping dir for modules
 
 WISHLIST:
 
