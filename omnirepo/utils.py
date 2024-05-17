@@ -31,6 +31,34 @@ def update_config(config: dict) -> None:
 def get_pyproject_toml() -> dict:
     with open("pyproject.toml", mode="rb") as fp:
         return tomli.load(fp)
+    
+
+def get_package_pyproject_toml(package_name) -> dict:
+    config = get_config()
+    path = None
+    # print('packages:', config['packages'])
+    for scope in config['packages']:
+        for pkg in config['packages'][scope]:
+            if package_name == pkg: 
+                # print('path:', ['.', scope, config['workspace'], pkg, 'pyproject.toml'])
+                path = os.path.join(*['.', scope, config['workspace'], pkg, 'pyproject.toml'])
+                # print('path:', path)
+    if path:
+        with open(path, mode="rb") as fp:
+            return tomli.load(fp)
+    else:
+        return None
+    
+
+def get_package_path(package_name):
+    config = get_config()
+    path = None
+    # print('packages:', config['packages'])
+    for scope in config['packages']:
+        for pkg in config['packages'][scope]:
+            if package_name == pkg: 
+                path = ['.', scope, config['workspace'], pkg]
+    return path
 
 
 def update_pyproject_toml(updated: dict) -> None:

@@ -51,6 +51,7 @@ pipx uninstall omnirepo
 - [ ] linting - TEST
 - [ ] type checking - TEST
 - [ ] tests - TEST
+- [ ] add cool graphic for omnirepo logo
 - [ ] ~~plugin system??? (nope, better off trying to write something with nx maybe? Is it feasable?)~~
 - [ ] turn intp poetry plugin
 - [ ] publish to pypi

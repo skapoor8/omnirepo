@@ -1,13 +1,17 @@
 import click
 import json
-from .utils import get_config, update_config, mkdir_if_not_exists, rmdir_if_exists, write_string_to_file, get_pyproject_toml, update_pyproject_toml, get_vscode_settings, update_vscode_settings, get_project_directory
+from .utils import get_config, update_config, mkdir_if_not_exists, rmdir_if_exists, write_string_to_file, get_pyproject_toml, update_pyproject_toml, get_vscode_settings, update_vscode_settings, get_project_directory, get_package_pyproject_toml, get_package_path
 import pkgutil
 import subprocess
+import os
 
 
 @click.group()
 def cli():
-    pass
+    config = get_config()
+    if not config:
+        print(f'Not an omnirepo workspace')
+        exit()
 
 
 @click.command(help="Initialize workspace")
@@ -233,7 +237,14 @@ def run(command):
             click.echo(f'No project found with name "{command}". Running top-level task...')
             subprocess.run(f'poetry run task {command}', shell=True, text=True, capture_output= False)
         else:
-            subprocess.run(f'poetry run python {dir}/{config['workspace']}/{command}/{command}', shell=True, text=True, capture_output= False)
+            try:
+                pyproject = get_package_pyproject_toml(command)
+                main_path = pyproject['tool']['omnirepo']['main-path']
+                run_command = pyproject['tool']['omnirepo']['run-command']
+                run_command = run_command.replace('%MAIN_PATH%', os.path.join(*get_package_path(command), *main_path))
+                subprocess.run(run_command, shell=True, text=True, capture_output= False)
+            except Exception:
+                subprocess.run(f'poetry run python {dir}/{config['workspace']}/{command}/{command}', shell=True, text=True, capture_output= False)
 
 
 @click.command('import')
